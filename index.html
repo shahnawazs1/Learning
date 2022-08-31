@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+    <style type="text/css">
+        .light_mode #Toggle{border-color: #ff1b5b;}
+        .light_mode #Toggle:before{background-color: #ff1859; color: #fff;}
+        .dark-mode{ background-color: #121212;  color: #ccc;}
+        .dark-mode #Toggle{border-color: dodgerblue;}
+        .dark-mode #Toggle:before{color: #fff; background-color: dodgerblue;}
+        input[type=checkbox]{ width: 110px; height: 54px; position: relative; border: 2px solid; border-radius: 60px; appearance: none; -webkit-appearance: none; -moz-appearance: none;}
+        input[type=checkbox]:before{ content: '\e518'; font-family: "Material Icons"; border-radius: 50%; box-sizing: border-box; position: absolute;  transform: rotate(0deg); transition: transform 0.5s, left 0.5s; width: 46px; height: 46px; font-size: 36px; bottom: 2px; display: grid; place-items: center; left: 2px;}
+        input[type=checkbox]:checked:before{content: "\e51c"; transform: rotate(360deg); left: 58px;}
+        div{margin: 0 auto; width: 130px; margin-top: 40px;}
+    </style>
+</head>
+<body class="light_mode">
+<div class="">
+    <input type="checkbox" name="" id="Toggle">
+    <label for="Toggle">Toggle Theme</label>
+    
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+    $("#Toggle").change(function() {
+       if($(this).is(":checked")){
+        $("body").addClass("dark-mode");
+        $("body").removeClass("light_mode");
+       }
+       else{
+        $("body").addClass("light_mode");
+        $("body").removeClass("dark-mode");
+       }
+    });
+</script>
+</body>
+</html>

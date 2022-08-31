@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+
+		*{ box-sizing: border-box; }
+		body{display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;}
+		img{ max-width: 100%; }
+		p{ margin-bottom: 5px; }
+		h3{ margin: 0; }
+		h5{ margin: 10px 0; }
+		li{ margin-bottom: 0; }
+		.meal{ margin: 20px; 0 }
+		.text-center{ text-align: center; }
+	</style>
+</head>
+<body>
+
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<h3>Get Food</h3>
+		<h5>Get a random Food by clicking below</h5>
+		<button id="get_meal">Get Meal</button>
+
+	</div>
+
+	<div id="meal"></div>
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+	
+
+	const get_meal_btn=document.getElementById('get_meal');
+	const meal_container = document.getElementById('meal');
+
+		get_meal_btn.addEventListener( "click" , () =>{
+
+			fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+			.then(res => res.json())
+
+			.then(res=>{
+				createMeal(res.meals[0]);
+				console.log(res);
+			});
+		});
+
+
+		const createMeal = (meal) =>{
+			const ingredients = [];
+			
+				for(i=1; i<20; i++){
+
+				if(meal[`strIngredients${i}`]){
+				ingredients.push(`${meal[`strIngredients${i}`]}-${meal[`strMeasure${i}`]}`)
+					
+				}
+				
+				else{
+					break;
+				}
+			}
+
+
+			const newInnerHTML=`<div class="row">
+
+			<div class="columns five">
+			<img src="${meal.strMealThumb}">
+			<ul>${ingredients.map(ingredient=>`<li>${ingredient}</li>`).join('')}</ul>
+			</div>
+			<div class="col7">
+			<h3>${meal.strMeal}</h3>
+			</div>	`
+
+						
+			meal_container.innerHTML=newInnerHTML;
+		}
+
+
+
+
+var i = $('input[type="checkbox"]');
+
+i.on('click', function() {
+  var total = 0;
+  
+  i.each(function() {
+    if ($(this).prop('checked')) {
+     total += parseInt($(this).val());  
+    }
+
+  });
+  $('progress').val(total);
+});
+
+		
+
+
+</script>
+
+
+
+
+	
+	
+

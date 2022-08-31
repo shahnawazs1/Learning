@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		:root{
+			--color-body: #00bbff;
+		}
+
+		body{
+			background: var(--color-body);
+		}
+
+		.shoppingList{ width: 70%; margin: 0 auto;  text-align: center; background: #fff; padding: 2em;}
+		.form{ width: 70%; margin: 0 auto; text-align: center; }
+		.add_item_forms{ width: 100%; }
+		.add_item_forms input{ width: 30%; padding: 1rem; margin: auto; display: block; border: none; margin: 10px 0; border-radius: 10px; margin:10px auto;}
+		.hide{display: none;}
+		
+		.add_item_forms{ display: none; }
+		.show{ display: block; }
+	</style>
+</head>
+<body>
+<section class="shoppingList">
+<div class="shoppingListInner">
+<h1>My List</h1>
+<div class="List_container">
+	<p id="text"></p>
+	<ul></ul>
+</div>
+</div>
+</section>
+<section class="form">
+<div class="form_container">
+<form class="add_item_forms">
+	<input type="text" name="">
+	<input type="submit" name="addItem" id="Additemlll">
+	<input type="submit" name="clearItem" id="ClearItem" value="clear" >
+</form>
+<button class="AddItemss">Add Item</button>
+</div>
+</section>
+<script type="text/javascript">
+	let itemBTN=document.querySelector(".AddItemss");
+	let Additem2=document.querySelector(".add_item_forms");
+	let ListContainer=document.querySelector(".list_container");
+	let ListContainerUL=document.querySelector(".list_container ul");
+	let text=document.querySelector("#text");
+	let x = document.getElementById("Additemlll")
+	const RemoveShop=document.querySelector("#ClearItem");
+	const getValw=document.querySelector("#Additemlll");
+	
+  		 
+	
+
+	
+	function AddItemTop(){
+
+		itemBTN.innerHTML="loading...";
+		setTimeout(function(){
+			itemBTN.classList.add("hide");
+
+			Additem2.classList.add("show");
+
+		},500)
+	}
+
+	function cvv(e){
+		const getVal=document.querySelector("input").value;
+		e.preventDefault();
+		text.innerHTML= getVal;
+  		 console.log(getVal);
+	}
+	function clear(e){
+		e.preventDefault();
+		text.innerHTML="";
+	}
+
+	itemBTN.addEventListener('click',AddItemTop);
+	x.addEventListener('click',cvv);
+	RemoveShop.addEventListener('click',clear);
+
+
+
+	
+
+</script>
+</body>
+</html>

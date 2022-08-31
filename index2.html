@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Review</title>
+	<script src="https://kit.fontawesome.com/08b19d1da2.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+
+	@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+		:root{
+			--color-background: #264653;
+			--color-accent: #2A9D8F;
+			--color-button: #E76F51;
+			--color-body: #E9C46A;
+		}
+
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: 'Roboto', sans-serif;
+		}
+
+		html{height: 100%;}
+		body{
+			background: #fff;
+			display: grid;
+			min-height: 100%;
+			grid-template-rows: 1fr auto;
+		}
+		.sticky{ grid-template-rows: 1fr; }
+		h1{background-color: var(--color-background); color: #fff; padding: 20px; margin: 0;}
+		h2{ margin: 20px 0; }
+		main{ margin: 20px auto; width: 100%; max-width: 1280px; }
+		input,textarea{ width: 100%; }
+		.section #flashmsg{ display: none; }
+		.section button{
+			background-color: var(--color-accent);
+			border: none;
+			border-radius: 5px;
+			font-size: 20px;
+			color: #fff;
+			text-transform: uppercase;
+			text-shadow: none;
+			letter-spacing: 2px;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+		.Modal{ position: fixed; top: 0; bottom: 0; left: 0; right: 0;  background: var(--color-body); height: 100%; overflow: scroll;}
+		.Modalcontainer{ width: 80%; margin: 15% auto; }
+		.closerev{position: absolute; right: 10px; font-size: 36px; color: #fff; font-weight: 600; top: 20px;}
+		.flashmsg{ margin-top: 15px; padding: 10px; background: var(--color-button);  color: #fff; border-radius: 5px;}
+	</style>
+</head>
+<body>
+<section class="sticky">
+	<header>
+		<h1>Review</h1>
+	</header>
+	<main>
+
+		<div class="section">
+			<h2>Review</h2>
+			<p>Leave a Review</p>
+			<button class="reviewbtn">Add review</button>
+		</div>
+		<div id="addrevdyn"></div>
+		<div class="Modal">
+			<div class="Modalcontainer">
+				<span class="closerev">X</span>
+				<label>Title
+				<input type="text" name="" class="rest1">
+				</label>
+				<label>Title
+				<textarea class="rest2"></textarea>
+				</label>
+			</div>
+
+			<div class="star_rating">
+				<input type="checkbox" name="ad" id="st1" value="1">
+				<input type="checkbox" name="ad" id="st2" value="2">
+				<input type="checkbox" name="ad" id="st3"value="3">
+				<input type="checkbox" name="ad" id="st4"value="4">
+				<input type="checkbox" name="ad" id="st5" value="5">
+				
+
+			</div>
+				<button class="revsb">Submit</button>
+		</div>
+	</main>
+</section>
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ <script type="text/javascript">
+ $(".Modal").hide();
+ $(".section").fadeIn(2000).show();
+ $("#flashmsg")
+ .slideDown(1000)
+ .delay(300)
+ .slideUp(1000);
+
+$(".reviewbtn").click(function() {
+	$(".Modal").show();
+})
+
+function createStar(container){
+	const $span=$('<span></span>');
+	const $star=$("<i></i>");
+	$star.addClass("fas fa-star")
+	$($span).append($star)
+	$(container).append($span)
+}
+
+$('.revsb').click(function(e){
+const name = $(".rest1").val();
+const rev=$(".rest2").val();
+if(name==""){
+	e.preventDefault();
+	alert("enter a valid Name");
+}
+
+else if(rev==""){
+	e.preventDefault();
+	alert("enter review");
+}
+else{
+	const $div=$("<div></div>");
+	$div.addClass("review");
+	$div.css("display","block");
+	$h3=$("<h3></h3>");
+	$h3.text(name);
+	$div.append($h3)
+	$p=$("<p></p>");
+	$p.text(rev);
+	$div.append($p);
+	$("#addrevdyn").append($div)
+	const $checkID=$("input[type=checkbox]:checked").length
+	console.log($checkID);
+
+	for(i=0; i<$checkID; i++){
+			createStar($div)
+		}
+	
+
+ $(".Modal").hide();
+}
+
+
+});
+$(".closerev").click(function(){
+$(".Modal").hide();	
+})
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

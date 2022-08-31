@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#Mybar{
+			background: #3f65d0;
+			width: 0;
+			height: 30px;
+			
+
+		}
+		.progress{ width: 80%; background: #dbd4d4; }
+#Mybarinner{   text-align: center; line-height: 30px; font-weight: 600; color: #fff;}
+
+	</style>
+</head>
+<body>
+<div class="progress">
+	
+	<div id="Mybar">
+		<div id="Mybarinner">0</div>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript">
+	
+	var data = document.getElementById("Mybarinner");
+	var prog = document.getElementById("Mybar");
+		count=0;
+
+
+	setInterval(function mymove() {
+		if(count>=50){
+			clearInterval()
+		}
+		else{
+		data.innerText=count+++"%";
+		prog.style.width=count+"%";
+		}
+	},30)
+
+		
+
+
+</script>
+</html>

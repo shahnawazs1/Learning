@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css">
+	<style type="text/css">
+		.container .elem{ height: 100%;
+		background-size: cover;background-repeat: no-repeat; width: 10%; position: relative;  transition-duration:1s; border-radius: 10px;}
+		.container .elem .text{ position: absolute; color: #fff; }
+		.container{ max-width: 750px;  height: 400px; display: flex;}
+		.container .elem.active{width: 52%; transition-duration:1s;}
+		.text{cursor: pointer; background: #fff; border: 2px solid #000; color: #000 !important; padding: 8px 15px; border-radius: 30px;}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="elem" style="background-image: url(https://cdn.pixabay.com/photo/2016/02/18/20/02/seljalandsfoss-1207958_960_720.jpg);"><div class="text">Slide-Button</div></div>
+	<div class="elem" style="background-image: url(https://cdn.pixabay.com/photo/2022/01/24/17/11/butterfly-6964083_960_720.jpg);"><div class="text">Slide-Button</div></div>
+	<div class="elem" style="background-image: url(https://cdn.pixabay.com/photo/2022/03/01/06/14/plum-7040627_960_720.jpg);"><div class="text">Slide-Button</div></div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(".text").click(function() {
+		$(".elem").removeClass("active")
+		$(this).parent('.elem').addClass("active")
+	})
+	</script>
+</body>
+</html>
